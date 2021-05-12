@@ -49,4 +49,3 @@ async function searchCountry(){
 // Loop over de array heen en maak op basis van de lengte van de array een string
 
 //Return het resultaat
-
