@@ -3,14 +3,14 @@
 const form = document.querySelector('#search-form');
 form.addEventListener('submit', function(e){
     e.preventDefault();
-    //if (e.key === 'Enter'){searchCountry();}
-   // const searchTerm = form.elements.query.value;
+    if (e.key === 'Enter'){searchCountry();}
+   //const searchTerm = form.elements.input.value;
+    form.elements.input.value = ''
 })
 const sButton = document.getElementById("search");
 //Zet een event-listener (click) op de knop en verwijs naar de functie (searchCountry)
 sButton.addEventListener("click",() => {
     searchCountry();
-
 });
 //Declareer de functie searchCountry
 //Volg de stappen voor het maken van een request om de data over Belgie op te halen
@@ -24,27 +24,25 @@ async function searchCountry(){
         const result = await axios.get(`https://restcountries.eu/rest/v2/name/${query}`);//${query}`);
         console.log(result);
         const country = result.data[0];
-        let countryTitle = country.name;
+
         console.log(country.flag);
-        // display de vlag van het land
-        //const flagImage = document.querySelector("#country-flag img");
-        //flagImage.alt = "The country flag";
+        console.log(result.data[0].flag);
         const countryFlag = document.getElementById('country-flag');
         const flagImage = document.createElement('ímg');
-        flagImage.src = 'https://restcountries.eu/data/${query}';
-        flagImage.setAttribute('alt', 'The country flag')//('src', `https://restcountries.eu/data/bel.svg`)
+        flagImage.setAttribute('src', 'country.flag')//('src', `https://restcountries.eu/data/bel.svg`)
         countryFlag.appendChild(flagImage);
 
         // display de naam van het land
+        let countryTitle = country.name;
         const countryT = document.getElementById('country-title');
         const title = document.createElement('h1');
         title.textContent = countryTitle;
         countryT.appendChild(title);
         // display de algemene info van het land
-        const countryInfo = country.name +  ' is situated in ' + country.subregion + '. It has a population of ' + country.population + 'people.'  + '<br>'+ 'The capital is: ' + country.capital;
+        const countryInfo = country.name +  " is situated in " + country.subregion +"." +"\n " + "It has a population of " + country.population  + " people." + "\n" + "The capital is: " + country.capital;
         const countryI = document.getElementById('country-info');
         const generalInfo = document.createElement('p');
-        generalInfo.textContent = countryInfo;
+        generalInfo.innerText = countryInfo;
         countryI.appendChild(generalInfo);
         //console.log(country.name + " is situated in " + country.subregion + ". It has a population of " + country.population + " people.");
         // 3
@@ -70,24 +68,7 @@ async function searchCountry(){
         currencyI.textContent = currencyInfo;
         currency.appendChild(currencyI);
 
-        // Loop over de array heen en maak op basis van de lengte van de array een string
-        // const numberOfCurrencies = country.currencies.length;
-        // //for(let i = 0; i < numberOfCurrencies; i++) {
-        //     if (numberOfCurrencies === 1) {
-        //         //1 valuta: and you can pay with [currency]'s
-        //         console.log('You can pay with ' + country.currencies[0].name + 's')
-        //         //2 valuta's: and you can pay with [currency]'s and [currency]'s
-        //     } else if (numberOfCurrencies === 2) {
-        //         console.log('You can pay with ' + country.currencies[0].name + 's' + country.currencies[0].name + 's')
-        //     }
-        //}
         // ## Bonusopdracht: Maak een functie die ongeacht het aantal talen die in een land gesproken worden, een string maakt:
-        //
-        // 1 taal: They speak [language]
-        // 2 talen: They speak [language] and [language]
-        // 3 talen: They speak [language], [language] and [language]
-        // etc.
-        //
         // 1. Declareer een functie die een array van talen verwacht (strings)
         function languagesSpoken() {
             let spokenLanguages = [];
@@ -107,22 +88,18 @@ async function searchCountry(){
         languageI.textContent = languageInfo;
         language.appendChild(languageI);
 
-        // let spokenLanguages = country.languages[0].name;
-        //  const numberOfLanguages = country.languages.length;
-        //      if (numberOfLanguages === 2){
-        //        spokenLanguages = "They speak: " + spokenLanguages + ' and ' + country.languages[1].name
-        //        console.log(spokenLanguages)
-        //     }  else if  (numberOfLanguages === 3) {
-        //          spokenLanguages = "They speak: " +  spokenLanguages + ', ' + country.languages[1].name + ' and ' + country.languages[2].name;
-        //          console.log(spokenLanguages);
-        //      } else {spokenLanguages ="They speak: " + spokenLanguages;
-        //          console.log(spokenLanguages);
-        //      }
 
     } catch(e) {
         console.log("Error", e);
+        //display Errormessage
+        // const errorMessage = ("ongeldige invoer", e);
+        // const errorC = document.getElementById('country-info')
+        // const errorT = document.createElement('h2');
+        // errorT.textContent = errorMessage;
+        // errorC.appendChild(errorT);
     }
 };
+
 searchCountry();
 // const countryInfo = document.getElementById('country-info');
 // const info = document.createElement('p');

@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <title>Countryquide</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <title>Countryguide</title>
 </head>
 <body>
+<div id="globe">
+    <img src ="assets/globe.gif">
+</div>
 <div class ="page-container">
-<form id="search-form">
-    <input type="text" placeholder="Look up a county..." name="input">
-    <button id ="search">Zoek</button>
-</form>
-    <div id ="country-flag"></div>
-    <div id ="country-title"></div>
+    <form id="search-form">
+        <input class="put-text" type="text" placeholder="Look up a county..." name="input">
+        <button id ="search">Go!</button>
+    </form>
+    <div class="title">
+        <div id ="country-flag"></div>
+        <div id ="country-title"></div>
+    </div>
     <div id="country-info"></div>
     <div id ="currency-c"></div>
     <div id ="language-c"></div>
