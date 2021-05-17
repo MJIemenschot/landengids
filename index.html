@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <title>Countryguide</title>
 </head>
 <body>
-<button id ="search">Zoek</button>
+<div id="globe">
+    <img src ="assets/globe.gif">
+</div>
+<div class ="page-container">
+    <form id="search-form">
+        <input class="put-text" type="text" placeholder="Look up a county..." name="input">
+        <button id ="search">Go!</button>
+    </form>
+    <div class="title">
+        <div id ="country-flag"></div>
+        <div id ="country-title"></div>
+    </div>
+    <div id="country-info"></div>
+    <div id ="currency-c"></div>
+    <div id ="language-c"></div>
+</div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="main.js"></script>
 </body>
